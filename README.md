@@ -2,6 +2,8 @@
 
 ![Swiss Economy Matrix Screenshot](./screenshot.png)
 
+> 🚀 **Live Demo**: [https://swiss-economy-matrix.web.app](https://swiss-economy-matrix.web.app) (or [https://swiss-economy-matrix.firebaseapp.com](https://swiss-economy-matrix.firebaseapp.com))
+
 An intuitive, high-performance web application designed to visualize Switzerland's Gross Domestic Product (GDP) and economic sector hierarchy through animated, multi-tier drill-down pie and donut charts.
 
 ---
