@@ -1063,8 +1063,43 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   percentageOfParent: 38.8,
                   description: "High-speed articulated robots, electric vehicle high-power fast charging stations, variable frequency drives, and grid power transmission equipment.",
                   keyDrivers: ["ABB industrial robotics line", "Stäubli cleanroom fast robots", "High-voltage switchgear"],
-                  notableEntities: ["ABB", "Stäubli", "Burckhardt Compression"],
-                  source: OFFICIAL_SOURCES.SWISSMEM
+                  notableEntities: ["ABB", "Stäubli", "Hitachi Energy (former ABB Power Grids)"],
+                  source: OFFICIAL_SOURCES.SWISSMEM,
+                  children: [
+                    {
+                      id: "robotics-articulated-arms",
+                      name: "Articulated Industrial Robots & Cleanroom Manipulators",
+                      shortName: "Articulated & Cleanroom Robots",
+                      icon: "🦾",
+                      color: "#92400e",
+                      valueUSD: 3.6,
+                      percentageOfParent: 42.4,
+                      description: "High-precision 6-axis SCARA and delta pick-and-place robots engineered by ABB Robotics and Stäubli International for sterile pharma and semiconductor cleanrooms.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "robotics-hvdc-switchgear",
+                      name: "Power Grid Automation, HVDC & Gas-Insulated Switchgear",
+                      shortName: "Grid Automation & HVDC",
+                      icon: "⚡",
+                      color: "#b45309",
+                      valueUSD: 3.1,
+                      percentageOfParent: 36.5,
+                      description: "Pioneered in Baden by ABB and Hitachi Energy: HVDC transmission converters enabling cross-border renewable electricity interconnects and compact GIS substations.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "robotics-variable-drives",
+                      name: "Industrial Variable Frequency Drives & Traction Converters",
+                      shortName: "Drives & Traction Power",
+                      icon: "🔌",
+                      color: "#d97706",
+                      valueUSD: 1.8,
+                      percentageOfParent: 21.1,
+                      description: "Heavy-duty electric traction power converters powering high-speed trainsets (Stadler Rail) and energy-saving industrial motor controllers.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    }
+                  ]
                 },
                 {
                   id: "machinery-elevators-mobility",
@@ -1077,7 +1112,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   description: "Schindler moves over 2 billion people every single day with cutting-edge destination-dispatch elevators, high-rise transit cabs, and moving walkways.",
                   keyDrivers: ["Schindler Ahead smart IoT elevators", "High-speed skyscraper hoist technology"],
                   notableEntities: ["Schindler Group"],
-                  source: OFFICIAL_SOURCES.SWISSMEM
+                  source: OFFICIAL_SOURCES.SWISSMEM,
+                  children: [
+                    {
+                      id: "elev-skyscraper-destination",
+                      name: "High-Rise Skyscraper Hoists & PORT Destination Dispatch",
+                      shortName: "Skyscraper Hoists & PORT AI",
+                      icon: "🏙️",
+                      color: "#b45309",
+                      valueUSD: 2.8,
+                      percentageOfParent: 45.9,
+                      description: "Schindler PORT technology uses AI traffic prediction to group passengers and route double-deck high-speed elevator cabs in the world's tallest towers.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "elev-commercial-mrl",
+                      name: "Mid-Rise Commercial & Residential Eco-Traction Elevators",
+                      shortName: "Commercial Eco-Elevators",
+                      icon: "🛗",
+                      color: "#d97706",
+                      valueUSD: 2.2,
+                      percentageOfParent: 36.1,
+                      description: "Gearless machine-room-less (MRL) passenger elevators (Schindler 3000/5000) equipped with regenerative drives feeding electricity back into building circuits.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "elev-airport-walkways",
+                      name: "Heavy-Duty Airport Transit Escalators & Moving Walkways",
+                      shortName: "Heavy-Transit Escalators",
+                      icon: "🚶",
+                      color: "#f59e0b",
+                      valueUSD: 1.1,
+                      percentageOfParent: 18.0,
+                      description: "Extreme heavy-duty public transit moving walkways and escalators designed for 24/7 continuous operation in international rail and airport hubs.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    }
+                  ]
                 },
                 {
                   id: "machinery-food-processing-plants",
@@ -1090,7 +1160,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   description: "Bühler turnkey manufacturing lines process approximately 65% of the world's grain harvest into flour, and 70% of the world's chocolate production.",
                   keyDrivers: ["Bühler industrial flour mills", "Chocolate conching & refining lines"],
                   notableEntities: ["Bühler Group", "SIG Group (aseptic carton packaging)"],
-                  source: OFFICIAL_SOURCES.SWISSMEM
+                  source: OFFICIAL_SOURCES.SWISSMEM,
+                  children: [
+                    {
+                      id: "foodplant-buhler-grain",
+                      name: "Turnkey Industrial Flour Mills & Optical Grain Sorters",
+                      shortName: "Flour Mills & Grain Sorters",
+                      icon: "🌾",
+                      color: "#b45309",
+                      valueUSD: 2.1,
+                      percentageOfParent: 48.8,
+                      description: "Uzwil-based Bühler Group's industrial roller mills and SORTEX optical camera sorting systems processing wheat, rice, corn, and pulses worldwide.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "foodplant-chocolate-refining",
+                      name: "Industrial Cocoa Roasting, Five-Roll Refiners & Conches",
+                      shortName: "Chocolate Refiners & Conches",
+                      icon: "🍫",
+                      color: "#d97706",
+                      valueUSD: 1.4,
+                      percentageOfParent: 32.6,
+                      description: "Bühler continuous conching machines and micro-grinding five-roll refiners producing over 70% of the planet's industrial chocolate couverture.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "foodplant-sig-aseptic-filling",
+                      name: "Aseptic Carton Packaging & High-Speed Liquid Filling",
+                      shortName: "SIG Aseptic Packaging",
+                      icon: "🧃",
+                      color: "#f59e0b",
+                      valueUSD: 0.8,
+                      percentageOfParent: 18.6,
+                      description: "SIG Group (Neuhausen am Rheinfall) automated aseptic filling lines packaging shelf-stable milks, juices, and liquid foods at up to 24,000 packs/hour.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    }
+                  ]
                 },
                 {
                   id: "machinery-precision-cnc",
@@ -1103,7 +1208,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   description: "Micron-accurate electrical discharge machining (EDM), laser texturing, and sliding-headstock Swiss automatic screw lathes for watchmaking and aerospace.",
                   keyDrivers: ["GF Machining Solutions EDM wire cutting", "Tornos SwissNano micro-lathes"],
                   notableEntities: ["Georg Fischer (GF Machining)", "Tornos", "Mikron"],
-                  source: OFFICIAL_SOURCES.SWISSMEM
+                  source: OFFICIAL_SOURCES.SWISSMEM,
+                  children: [
+                    {
+                      id: "cnc-tornos-swiss-lathes",
+                      name: "Sliding-Headstock Swiss-Type Automatic Micro-Lathes",
+                      shortName: "Tornos Swiss-Type Lathes",
+                      icon: "⚙️",
+                      color: "#b45309",
+                      valueUSD: 1.3,
+                      percentageOfParent: 43.3,
+                      description: "Moutier-based Tornos invented the sliding-headstock lathe, turning miniature watch pinion gears, bone screws, and dental implant abutments with micron precision.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "cnc-gf-wire-edm",
+                      name: "Electrical Discharge Machining (EDM Wire & Die-Sinking)",
+                      shortName: "GF Wire & Die-Sinking EDM",
+                      icon: "⚡",
+                      color: "#d97706",
+                      valueUSD: 1.1,
+                      percentageOfParent: 36.7,
+                      description: "GF Machining Solutions (AgieCharmilles) spark erosion machines capable of cutting hardened aerospace alloys, turbine blades, and watch molds with 0.1 µm finish.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    },
+                    {
+                      id: "cnc-mikron-rotary-transfer",
+                      name: "Multi-Spindle Rotary Transfer & 5-Axis Milling Centers",
+                      shortName: "Mikron Rotary Transfer",
+                      icon: "🔄",
+                      color: "#fbbf24",
+                      valueUSD: 0.6,
+                      percentageOfParent: 20.0,
+                      description: "Mikron Group (Ticino) ultra-fast rotary transfer machining systems delivering millions of precision parts for automotive ballpoint pens and injector nozzles.",
+                      source: OFFICIAL_SOURCES.SWISSMEM
+                    }
+                  ]
                 }
               ]
             },
