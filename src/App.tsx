@@ -36,7 +36,7 @@ export function App() {
   const [selectedNode, setSelectedNode] = useState<SectorNode>(
     SWISS_ECONOMY_TREE.children ? SWISS_ECONOMY_TREE.children[0] : SWISS_ECONOMY_TREE
   )
-  const [currency, setCurrency] = useState<'USD' | 'CHF'>('USD')
+  const [currency, setCurrency] = useState<'USD' | 'CHF'>('CHF')
   const [chartStyle, setChartStyle] = useState<'donut' | 'pie'>('donut')
   const [viewMode, setViewMode] = useState<'drilldown' | 'multigrid'>('drilldown')
 
@@ -439,7 +439,7 @@ export function App() {
       {/* Footer with Always Visible Official Sources Quotes */}
       <footer className="mt-12 bg-slate-900 border-t border-slate-800 py-8 px-4 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
+          <div className="space-y-1.5 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 text-slate-300 font-semibold">
               <span className="text-red-500 font-bold">✚</span>
               <span>Swiss National Accounts & Economic Sector Visualizer</span>
@@ -447,6 +447,23 @@ export function App() {
             <p className="text-[11px] text-slate-500 max-w-xl">
               Cross-referenced from the Swiss Federal Statistical Office (FSO / BFS / OFS), the Federal Office for Agriculture (FOAG / BLW), the Federal Office for the Environment (FOEN / BAFU), and the Observatory of Economic Complexity (OEC).
             </p>
+            <div className="flex items-center justify-center md:justify-start gap-3 pt-1 text-[11px] text-slate-400 flex-wrap">
+              <span className="flex items-center gap-1.5">
+                <span>Created & Curated by:</span>
+                <a
+                  href="https://orestis.ch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-white hover:text-red-400 underline underline-offset-4 transition-colors"
+                >
+                  orestis.ch
+                </a>
+              </span>
+              <span className="text-slate-700">•</span>
+              <span>
+                Last Updated: <strong className="text-slate-300 font-medium">September 28, 2026</strong>
+              </span>
+            </div>
           </div>
 
           <div className="flex items-center gap-4 flex-wrap justify-center text-xs">
@@ -454,7 +471,7 @@ export function App() {
               onClick={() => setIsSourcesOpen(true)}
               className="text-slate-300 hover:text-white underline underline-offset-4"
             >
-              All 6 Official Sources & Citations
+              All Official Sources & Citations
             </button>
             <span className="text-slate-700">•</span>
             <button
