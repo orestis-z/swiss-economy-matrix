@@ -212,14 +212,14 @@ export function App() {
               <span className="hidden sm:inline">Tools</span>
             </button>
 
-            {/* Sources Trigger */}
+            {/* Sources & Methodology Trigger */}
             <button
               onClick={() => setIsSourcesOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-medium transition-all"
-              title="Official Data Sources & Citations"
+              title="Official Data Sources, Provenance & Modeling Disclosures"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden sm:inline">Sources</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="hidden sm:inline">Sources & Disclosures</span>
             </button>
           </div>
         </div>
@@ -445,7 +445,7 @@ export function App() {
               <span>Swiss National Accounts & Economic Sector Visualizer</span>
             </div>
             <p className="text-[11px] text-slate-500 max-w-xl">
-              Cross-referenced from the Swiss Federal Statistical Office (FSO / BFS / OFS), the Federal Office for Agriculture (FOAG / BLW), the Federal Office for the Environment (FOEN / BAFU), and the Observatory of Economic Complexity (OEC).
+              Official macroeconomic benchmarks: Swiss Federal Statistical Office (BFS / FSO), FOAG (BLW), FOEN (BAFU), Swissmem, and FH. Product-level micro-splits marked with <span className="text-amber-400 font-semibold">* [Est.]</span> are economic estimates modeled from corporate financial filings and calibrated to match official parent aggregates.
             </p>
             <div className="flex items-center justify-center md:justify-start gap-3 pt-1 text-[11px] text-slate-400 flex-wrap">
               <span className="flex items-center gap-1.5">

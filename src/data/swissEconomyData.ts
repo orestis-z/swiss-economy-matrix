@@ -1,3 +1,5 @@
+export type DataSourceTier = 'official_direct' | 'modeled_estimate'
+
 export interface EconomicSource {
   name: string
   organization: string
@@ -20,6 +22,8 @@ export interface SectorNode {
   keyDrivers?: string[]
   notableEntities?: string[]
   source: EconomicSource
+  sourceTier?: DataSourceTier
+  estimateMethodology?: string
   additionalNotes?: string
   children?: SectorNode[]
 }
@@ -2201,3 +2205,99 @@ export function searchSectors(query: string, node: SectorNode = SWISS_ECONOMY_TR
   
   return results
 }
+
+// Nodes that are directly sourced from official national accounts and federal publications
+export const OFFICIAL_DIRECT_NODE_IDS = new Set<string>([
+  'switzerland',
+  'primary',
+  'secondary',
+  'tertiary',
+  // Primary Level 2
+  'primary-agriculture',
+  'primary-forestry',
+  'primary-fishing',
+  // Primary Level 3 (Aggregates directly tracked in Agrarbericht & FOEN accounts)
+  'agri-dairy',
+  'agri-livestock-meat',
+  'agri-crops-cereals',
+  'agri-viticulture-fruits',
+  'agri-horticulture-herbs',
+  'forestry-sawn-timber',
+  'forestry-energy-wood',
+  'forestry-protection-services',
+  'fishing-commercial-lakes',
+  'fishing-aquaculture-trout',
+  'fishing-recreational-hatcheries',
+  // Secondary Level 2
+  'secondary-manufacturing',
+  'secondary-construction',
+  'secondary-energy-utilities',
+  // Secondary Manufacturing Level 3 (Broad industry accounts from trade bodies)
+  'secondary-pharma-chemicals',
+  'secondary-watchmaking',
+  'secondary-machinery-electronics',
+  'secondary-precision-medtech',
+  'secondary-food-processing',
+  // Tertiary Level 2
+  'tertiary-trade-wholesale',
+  'tertiary-financial-insurance',
+  'tertiary-realestate-professional',
+  'tertiary-health-social',
+  'tertiary-transport-it-tourism',
+])
+
+export function isNodeModeledEstimate(node: SectorNode): boolean {
+  if (node.sourceTier === 'modeled_estimate') return true
+  if (node.sourceTier === 'official_direct') return false
+  return !OFFICIAL_DIRECT_NODE_IDS.has(node.id)
+}
+
+export function getNodeEstimateMethodology(node: SectorNode): string {
+  if (node.estimateMethodology) return node.estimateMethodology
+
+  const id = node.id
+
+  if (
+    id.startsWith('machinery-') ||
+    id.startsWith('elev-') ||
+    id.startsWith('foodplant-') ||
+    id.startsWith('cnc-') ||
+    id.startsWith('robotics-') ||
+    id.startsWith('grid-') ||
+    id.startsWith('drives-')
+  ) {
+    return 'Calibrated from corporate annual reports (ABB, Schindler, Bühler, Georg Fischer, Tornos, Mikron, SIG) and Swissmem industry turnover data. Official national accounts group all machinery under NOGA 28 and do not publish individual product lines.'
+  }
+  if (id.startsWith('watch-')) {
+    return 'Modeled from the Morgan Stanley / LuxeConsult Swiss Watch Industry annual study and FH export reports by price tier. Official FH statistics record aggregate export volumes and precious metals, while segment and brand splits are industry analyst estimates.'
+  }
+  if (id.startsWith('pharma-')) {
+    return 'Modeled from annual financial filings of Roche, Novartis, Lonza, and Givaudan, calibrated against scienceindustries aggregate chemical-pharmaceutical export statistics.'
+  }
+  if (id.startsWith('medtech-')) {
+    return 'Modeled from Swiss Medtech industry studies and financial filings of Straumann, Sonova, Alcon, and Tecan, calibrated against total Swiss medical technology value added.'
+  }
+  if (id.startsWith('food-')) {
+    return 'Modeled from Nestlé, Lindt & Sprüngli, and Emmi segment disclosures, anchored into Chocosuisse and BFS food manufacturing accounts.'
+  }
+  if (id.startsWith('secondary-energy-') || id.startsWith('hydro-') || id.startsWith('nuc-') || id.startsWith('renew-')) {
+    return 'Energy physical generation (TWh) is directly tracked by the Swiss Federal Office of Energy (SFOE / BFE); monetary GDP value-added splits are economic estimates modeled on wholesale baseload power prices.'
+  }
+  if (id.startsWith('secondary-construction-') || id.startsWith('bldg-') || id.startsWith('spec-') || id.startsWith('civil-')) {
+    return 'Modeled from Schweizerischer Baumeisterverband (SBV) contract data and materials filings (Sika, Holcim, Geberit), calibrated to BFS NOGA Section F construction totals.'
+  }
+  if (id.startsWith('comm-') || id.startsWith('retail-') || id.startsWith('tertiary-commodity-') || id.startsWith('tertiary-retail-') || id.startsWith('tertiary-wholesale-b2b')) {
+    return 'Modeled from corporate revenue disclosures of Geneva/Zug trading houses (Glencore, Trafigura, Vitol, Gunvor) and Migros/Coop retail accounts, calibrated to BFS wholesale trade totals.'
+  }
+  if (id.startsWith('wealth-') || id.startsWith('ins-') || id.startsWith('bank-') || id.startsWith('tertiary-wealth-') || id.startsWith('tertiary-insurance-') || id.startsWith('tertiary-cantonal-')) {
+    return 'Modeled from Swiss National Bank (SNB) banking statistics and annual reports of UBS, Swiss Re, Zurich Insurance, and Swiss Life, calibrated to BFS financial sector GDP.'
+  }
+  if (id.startsWith('it-') || id.startsWith('trans-') || id.startsWith('edu-') || id.startsWith('tour-') || id.startsWith('tertiary-it-') || id.startsWith('tertiary-transport-') || id.startsWith('tertiary-education-') || id.startsWith('tertiary-tourism-')) {
+    return 'Modeled from corporate disclosures (SBB, Swisscom, Google Switzerland) and Switzerland Tourism overnight stay revenue models, calibrated to BFS services accounts.'
+  }
+  if (id.startsWith('cheese-') || id.startsWith('beef-') || id.startsWith('wine-') || id.startsWith('fish-') || id.startsWith('timber-')) {
+    return 'Physical production volumes (tons/hectoliters) are tracked by FOAG/FOEN and Interprofession registries (AOP Gruyère/Emmentaler); economic GDP value-added shares are modeled estimates based on wholesale price realization.'
+  }
+  return 'Economic estimate modeled from corporate disclosures, market share data, and industry reports, calibrated to match the official parent sector total from the Swiss Federal Statistical Office.'
+}
+

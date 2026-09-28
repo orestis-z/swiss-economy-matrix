@@ -2,6 +2,7 @@ import React, { useState, useId } from 'react'
 import type { PieSlice } from '../utils/pieMath'
 import { calculateSlices, polarToCartesian, formatValue } from '../utils/pieMath'
 import type { SectorNode } from '../data/swissEconomyData'
+import { isNodeModeledEstimate } from '../data/swissEconomyData'
 import { ChevronRight } from 'lucide-react'
 
 interface PieChartRendererProps {
@@ -171,13 +172,16 @@ export const PieChartRenderer: React.FC<PieChartRendererProps> = ({
                     className="fill-emerald-400 font-semibold text-xs tracking-wider select-none"
                   >
                     {formatValue(activeSlice.value, currency)}
+                    {isNodeModeledEstimate(activeSlice.originalNode) ? ' *' : ''}
                   </text>
                   <text
                     y="36"
                     textAnchor="middle"
                     className="fill-slate-400 text-[10px] select-none max-w-[90px] truncate"
                   >
-                    {activeSlice.shortName || activeSlice.name.substring(0, 16)}
+                    {isNodeModeledEstimate(activeSlice.originalNode)
+                      ? `[Est.] ${activeSlice.shortName || activeSlice.name.substring(0, 12)}`
+                      : (activeSlice.shortName || activeSlice.name.substring(0, 16))}
                   </text>
                 </>
               ) : (
@@ -228,6 +232,7 @@ export const PieChartRenderer: React.FC<PieChartRendererProps> = ({
             const isHovered = hoveredSlice?.id === slice.id
             const isSelected = selectedId === slice.id
             const percentOfSwissGDP = (slice.value / totalGdpUSD) * 100
+            const isEstimated = isNodeModeledEstimate(slice.originalNode)
 
             return (
               <div
@@ -252,9 +257,19 @@ export const PieChartRenderer: React.FC<PieChartRendererProps> = ({
                   />
                   <span className="text-lg flex-shrink-0">{slice.icon}</span>
                   <div className="flex flex-col min-w-0">
-                    <span className="text-sm font-medium text-slate-100 truncate group-hover:text-white">
-                      {slice.name}
-                    </span>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <span className="text-sm font-medium text-slate-100 truncate group-hover:text-white">
+                        {slice.name}
+                      </span>
+                      {isEstimated && (
+                        <span
+                          className="text-[9px] uppercase font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 flex-shrink-0"
+                          title="Modeled Economic Estimate (not a raw statistical bureau line item)"
+                        >
+                          Est.
+                        </span>
+                      )}
+                    </div>
                     <span className="text-[11px] text-slate-400">
                       {percentOfSwissGDP >= 0.1
                         ? `${percentOfSwissGDP.toFixed(1)}% of total Swiss GDP`
@@ -268,6 +283,7 @@ export const PieChartRenderer: React.FC<PieChartRendererProps> = ({
                   <div className="flex flex-col items-end">
                     <span className="text-sm font-bold text-emerald-400">
                       {formatValue(slice.value, currency)}
+                      {isEstimated && <span className="text-amber-400 ml-0.5" title="Modeled Economic Estimate">*</span>}
                     </span>
                     <span className="text-xs font-semibold text-slate-300">
                       {slice.percentage.toFixed(1)}%
@@ -296,6 +312,14 @@ export const PieChartRenderer: React.FC<PieChartRendererProps> = ({
               </div>
             )
           })}
+        </div>
+
+        {/* Footnote on Data Provenance */}
+        <div className="mt-1 pt-2 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-start gap-1.5">
+          <span className="text-amber-400 font-bold">*</span>
+          <span>
+            <strong className="text-slate-300">Data Disclosure:</strong> Figures marked <span className="text-amber-400 font-semibold">* [Est.]</span> are modeled economic estimates calibrated from corporate annual reports to match official parent totals. Unmarked entries are direct official statistics.
+          </span>
         </div>
       </div>
     </div>

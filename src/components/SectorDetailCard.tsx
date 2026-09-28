@@ -1,6 +1,7 @@
 import React from 'react'
 import type { SectorNode } from '../data/swissEconomyData'
-import { ExternalLink, Building2, TrendingUp, BookOpen, ChevronRight } from 'lucide-react'
+import { isNodeModeledEstimate, getNodeEstimateMethodology } from '../data/swissEconomyData'
+import { ExternalLink, Building2, TrendingUp, BookOpen, ChevronRight, AlertTriangle, ShieldCheck } from 'lucide-react'
 import { formatValue } from '../utils/pieMath'
 
 interface SectorDetailCardProps {
@@ -20,6 +21,8 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
 }) => {
   const percentOfTotal = (node.valueUSD / totalGdpUSD) * 100
   const hasChildren = Boolean(node.children && node.children.length > 0)
+  const isEstimated = isNodeModeledEstimate(node)
+  const methodology = getNodeEstimateMethodology(node)
 
   return (
     <div className="w-full bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 p-6 flex flex-col gap-6 shadow-xl relative overflow-hidden">
@@ -47,6 +50,17 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
               <span className="text-xs uppercase font-mono tracking-wider text-slate-400">
                 Selected Sector Detail
               </span>
+              {isEstimated ? (
+                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                  <AlertTriangle className="w-3 h-3 text-amber-400" />
+                  <span>Modeled Estimate</span>
+                </span>
+              ) : (
+                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                  <span>Direct Official</span>
+                </span>
+              )}
             </div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mt-0.5">
               {node.name}
@@ -59,6 +73,7 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
           <div className="flex items-baseline gap-2">
             <span className="text-xl md:text-2xl font-extrabold text-emerald-400 tracking-tight">
               {formatValue(node.valueUSD, currency)}
+              {isEstimated && <span className="text-amber-400 ml-0.5" title="Modeled Economic Estimate">*</span>}
             </span>
             <span className="text-xs text-slate-400 font-mono">
               ({currency === 'USD' ? 'USD' : 'CHF'})
@@ -143,13 +158,53 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
         )}
       </div>
 
-      {/* Official Data Source Citation Box (Prompt explicitly required: "make sure to always quote and link the source used to create the data") */}
-      <div className="mt-2 p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      {/* Data Provenance & Transparency Callout (Explicitly mentions whether number was directly sourced or modeled) */}
+      {isEstimated ? (
+        <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/40 text-amber-200 flex flex-col gap-2">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-amber-400">
+              <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+              <span>Notice: Modeled Economic Estimate (Not Directly Sourced)</span>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-900/60 text-amber-200 border border-amber-500/30">
+              Modeled Sub-Tier
+            </span>
+          </div>
+          <p className="text-xs text-amber-100/90 leading-relaxed">
+            {methodology}
+          </p>
+          <div className="text-[11px] text-amber-300/80 pt-1.5 border-t border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <span>
+              <strong>Parent Benchmark:</strong> Scaled proportionally to anchor into the official {node.source.organization} sector total.
+            </span>
+            <span className="text-[10px] text-amber-400/90 italic">
+              * Not a raw statistical bureau line item
+            </span>
+          </div>
+        </div>
+      ) : (
+        <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-emerald-200 flex items-start gap-2.5">
+          <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+          <div className="flex flex-col gap-0.5">
+            <div className="font-bold text-xs uppercase tracking-wider text-emerald-300">
+              Direct Official Government / Industry Record
+            </div>
+            <p className="text-xs text-emerald-100/90 leading-relaxed">
+              This figure is directly reported in published statistical releases by {node.source.organization} ({node.source.name}).
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Official Data Source Citation Box */}
+      <div className="mt-1 p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-start gap-2.5 min-w-0">
           <BookOpen className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
           <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="font-semibold text-slate-200">Official Data Source:</span>
+              <span className="font-semibold text-slate-200">
+                {isEstimated ? 'Parent Benchmark Source:' : 'Official Data Source:'}
+              </span>
               <span className="text-slate-300 font-medium">{node.source.name}</span>
               <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
                 {node.source.yearOrEdition}

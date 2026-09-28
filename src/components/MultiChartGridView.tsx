@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import type { SectorNode } from '../data/swissEconomyData'
-import { findSectorById } from '../data/swissEconomyData'
+import { findSectorById, isNodeModeledEstimate } from '../data/swissEconomyData'
 import type { PieSlice } from '../utils/pieMath'
 import { calculateSlices, formatValue } from '../utils/pieMath'
-import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react'
+import { ArrowRight, ExternalLink, Sparkles, AlertTriangle } from 'lucide-react'
 
 interface MultiChartGridViewProps {
   onSelectAndFocus: (node: SectorNode) => void
@@ -27,6 +27,7 @@ const MiniDonut: React.FC<{
   const items = node.children || []
   const slices = calculateSlices(items, cx, cy, outerRadius, innerRadius)
   const total = items.reduce((acc, it) => acc + it.valueUSD, 0)
+  const isNodeEstimated = isNodeModeledEstimate(node)
 
   return (
     <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between hover:border-slate-700 transition-all hover:shadow-xl group">
@@ -36,9 +37,19 @@ const MiniDonut: React.FC<{
           <div className="flex items-center gap-2">
             <span className="text-xl">{node.icon}</span>
             <div>
-              <h4 className="font-bold text-sm text-slate-100 group-hover:text-white transition-colors">
-                {node.name}
-              </h4>
+              <div className="flex items-center gap-1.5">
+                <h4 className="font-bold text-sm text-slate-100 group-hover:text-white transition-colors">
+                  {node.name}
+                </h4>
+                {isNodeEstimated && (
+                  <span
+                    className="text-[9px] uppercase font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 flex-shrink-0"
+                    title="Modeled Economic Estimate"
+                  >
+                    Est.
+                  </span>
+                )}
+              </div>
               <span className="text-xs text-slate-400">
                 {items.length} sub-branches
               </span>
@@ -47,6 +58,7 @@ const MiniDonut: React.FC<{
           <div className="text-right">
             <div className="text-sm font-bold text-emerald-400">
               {formatValue(node.valueUSD, currency)}
+              {isNodeEstimated && <span className="text-amber-400 ml-0.5" title="Modeled Estimate">*</span>}
             </div>
             <div className="text-[11px] text-slate-400">
               {((node.valueUSD / 936.5) * 100).toFixed(1)}% of GDP
@@ -113,30 +125,41 @@ const MiniDonut: React.FC<{
 
         {/* Slices legend preview */}
         <div className="flex flex-col gap-1.5 text-xs mt-2 max-h-36 overflow-y-auto pr-1">
-          {slices.map((slice) => (
-            <div
-              key={slice.id}
-              className={`flex items-center justify-between p-1.5 rounded-lg transition-colors ${
-                hoveredSlice?.id === slice.id ? 'bg-slate-800' : 'hover:bg-slate-800/40'
-              }`}
-              onMouseEnter={() => setHoveredSlice(slice)}
-              onMouseLeave={() => setHoveredSlice(null)}
-            >
-              <div className="flex items-center gap-2 truncate">
-                <span
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: slice.color }}
-                />
-                <span className="text-slate-300 truncate text-[11px]">
-                  {slice.shortName || slice.name}
-                </span>
+          {slices.map((slice) => {
+            const isSliceEst = isNodeModeledEstimate(slice.originalNode)
+            return (
+              <div
+                key={slice.id}
+                className={`flex items-center justify-between p-1.5 rounded-lg transition-colors ${
+                  hoveredSlice?.id === slice.id ? 'bg-slate-800' : 'hover:bg-slate-800/40'
+                }`}
+                onMouseEnter={() => setHoveredSlice(slice)}
+                onMouseLeave={() => setHoveredSlice(null)}
+              >
+                <div className="flex items-center gap-1.5 truncate">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: slice.color }}
+                  />
+                  <span className="text-slate-300 truncate text-[11px]">
+                    {slice.shortName || slice.name}
+                  </span>
+                  {isSliceEst && (
+                    <span className="text-[8px] uppercase font-mono px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 flex-shrink-0">
+                      Est.
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center gap-1.5 flex-shrink-0 font-mono text-[11px]">
+                  <span className="text-emerald-400">
+                    {formatValue(slice.value, currency)}
+                    {isSliceEst && <span className="text-amber-400 ml-0.5">*</span>}
+                  </span>
+                  <span className="text-slate-400">{slice.percentage.toFixed(1)}%</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 flex-shrink-0 font-mono text-[11px]">
-                <span className="text-emerald-400">{formatValue(slice.value, currency)}</span>
-                <span className="text-slate-400">{slice.percentage.toFixed(1)}%</span>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
@@ -397,6 +420,22 @@ export const MultiChartGridView: React.FC<MultiChartGridViewProps> = ({
           </div>
         </div>
       )}
+
+      {/* Data Disclosure & Methodology Footnote */}
+      <div className="mt-8 p-4 rounded-2xl bg-slate-900/70 border border-slate-800 text-xs text-slate-300 flex items-start gap-3 shadow-lg">
+        <span className="text-amber-400 font-bold text-base flex-shrink-0 leading-none mt-0.5">*</span>
+        <div className="flex flex-col gap-1">
+          <div className="font-semibold text-slate-100 flex items-center gap-2">
+            <span>Data Provenance & Modeling Disclosure</span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              Official vs. Modeled
+            </span>
+          </div>
+          <p className="text-slate-400 leading-relaxed text-[11px]">
+            Macroeconomic sector figures (Primary, Secondary, Tertiary) and major industry totals are sourced directly from the Swiss Federal Statistical Office (BFS), FOAG, FOEN, Swissmem, and FH. Granular product lines marked with <span className="text-amber-300 font-semibold">* [Est.]</span> are economic estimates modeled from corporate financial filings (e.g., Bühler, Schindler, ABB, Lonza, Roche, Nestlé) and calibrated to match official parent aggregates, as national accounts do not publish GDP by product line.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
