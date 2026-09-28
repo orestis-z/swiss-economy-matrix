@@ -1,8 +1,13 @@
 # 🇨🇭 Swiss Economy Matrix — Interactive Drill-Down Pie Explorer
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-swiss--economy--matrix.web.app-00C49F?style=for-the-badge&logo=firebase&logoColor=white)](https://swiss-economy-matrix.web.app)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 ![Swiss Economy Matrix Screenshot](./screenshot.png)
 
-> 🚀 **Live Demo**: [https://swiss-economy-matrix.web.app](https://swiss-economy-matrix.web.app) (or [https://swiss-economy-matrix.firebaseapp.com](https://swiss-economy-matrix.firebaseapp.com))
+> 🌐 **Live Production Website**: **[https://swiss-economy-matrix.web.app](https://swiss-economy-matrix.web.app)** (Mirror: [https://swiss-economy-matrix.firebaseapp.com](https://swiss-economy-matrix.firebaseapp.com))
 
 An intuitive, high-performance web application designed to visualize Switzerland's Gross Domestic Product (GDP) and economic sector hierarchy through animated, multi-tier drill-down pie and donut charts.
 
