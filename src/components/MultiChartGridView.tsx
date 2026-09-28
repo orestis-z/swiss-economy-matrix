@@ -190,9 +190,13 @@ export const MultiChartGridView: React.FC<MultiChartGridViewProps> = ({
 
   // Secondary subcategories
   const manufacturing = findSectorById('secondary-manufacturing')
+  const pharma = findSectorById('secondary-pharma-chemicals')
+  const medtech = findSectorById('secondary-precision-medtech')
+  const watch = findSectorById('secondary-watchmaking')
+  const machinery = findSectorById('secondary-machinery-electronics')
+  const food = findSectorById('secondary-food-processing')
   const construction = findSectorById('secondary-construction')
   const energy = findSectorById('secondary-energy-utilities')
-  const pharma = findSectorById('secondary-pharma-chemicals')
 
   return (
     <div className="w-full flex flex-col gap-6">
@@ -229,7 +233,7 @@ export const MultiChartGridView: React.FC<MultiChartGridViewProps> = ({
                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
             }`}
           >
-            <span>⚙️ Secondary & Industrial Sub-Charts</span>
+            <span>⚙️ High-Tech & Precision Manufacturing Deep Suite</span>
           </button>
         </div>
 
@@ -330,7 +334,7 @@ export const MultiChartGridView: React.FC<MultiChartGridViewProps> = ({
       {activeTab === 'secondaryGranular' && (
         <div className="flex flex-col gap-4">
           <div className="bg-amber-950/20 p-4 rounded-xl border border-amber-800/30 text-xs text-slate-300 leading-relaxed">
-            <span className="font-bold text-amber-400">Secondary & Industrial Granular Suite:</span> High-precision manufacturing, civil infrastructure, and clean hydropower generation.
+            <span className="font-bold text-amber-400">High-Tech & Precision Manufacturing Deep Suite ($168.8B):</span> Switzerland is the world's most sophisticated exporter of life sciences, luxury mechanical horology, micron-accurate MedTech, and industrial robotics per capita. Explore the dedicated sub-pie charts for every single manufacturing discipline below:
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -346,6 +350,34 @@ export const MultiChartGridView: React.FC<MultiChartGridViewProps> = ({
                 node={pharma}
                 currency={currency}
                 onFocus={() => onSelectAndFocus(pharma)}
+              />
+            )}
+            {watch && (
+              <MiniDonut
+                node={watch}
+                currency={currency}
+                onFocus={() => onSelectAndFocus(watch)}
+              />
+            )}
+            {medtech && (
+              <MiniDonut
+                node={medtech}
+                currency={currency}
+                onFocus={() => onSelectAndFocus(medtech)}
+              />
+            )}
+            {machinery && (
+              <MiniDonut
+                node={machinery}
+                currency={currency}
+                onFocus={() => onSelectAndFocus(machinery)}
+              />
+            )}
+            {food && (
+              <MiniDonut
+                node={food}
+                currency={currency}
+                onFocus={() => onSelectAndFocus(food)}
               />
             )}
             {construction && (

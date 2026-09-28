@@ -251,6 +251,30 @@ export function App() {
               <span>🌱 Primary (0.6%)</span>
             </button>
             <button
+              onClick={() => handleJumpToNode(findSectorById('secondary-manufacturing')!)}
+              className="px-2.5 py-1 rounded-lg bg-amber-950/60 hover:bg-amber-900/60 text-amber-300 border border-amber-800/40 transition-colors flex items-center gap-1"
+            >
+              <span>🏭 High-Tech Mfg ($168.8B)</span>
+            </button>
+            <button
+              onClick={() => handleJumpToNode(findSectorById('secondary-watchmaking')!)}
+              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
+            >
+              ⌚ Watches ($23.6B)
+            </button>
+            <button
+              onClick={() => handleJumpToNode(findSectorById('secondary-precision-medtech')!)}
+              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
+            >
+              🔬 MedTech ($32.1B)
+            </button>
+            <button
+              onClick={() => handleJumpToNode(findSectorById('secondary-machinery-electronics')!)}
+              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
+            >
+              🤖 Machinery ($21.9B)
+            </button>
+            <button
               onClick={() => handleJumpToNode(findSectorById('agri-dairy')!)}
               className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
             >
@@ -261,12 +285,6 @@ export function App() {
               className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
             >
               💊 Pharma
-            </button>
-            <button
-              onClick={() => handleJumpToNode(findSectorById('secondary-watchmaking')!)}
-              className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
-            >
-              ⌚ Watches
             </button>
           </div>
 
