@@ -26,15 +26,17 @@ export const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({
   const getLevelLabel = (depth: number) => {
     switch (depth) {
       case 0:
-        return 'Macro Economy (3 Core Sectors)'
+        return 'Tier 1: Macro Economy (3 Main Sectors)'
       case 1:
-        return 'Sector Level (Major Branches)'
+        return 'Tier 2: Major Economic Branches'
       case 2:
-        return 'Branch Breakdown (Sub-Categories)'
+        return 'Tier 3: Specialized Disciplines'
       case 3:
-        return 'Granular Niche Sub-Sectors'
+        return 'Tier 4: Market Segments & Industry Pillars'
+      case 4:
+        return 'Tier 5: Ultra-Granular Products & Regional Heritage'
       default:
-        return `Level ${depth + 1} Drill-Down`
+        return `Tier ${depth + 1}: Deep Micro-Sectors`
     }
   }
 

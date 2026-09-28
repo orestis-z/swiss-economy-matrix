@@ -144,9 +144,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🧪",
               color: "#3b82f6",
               valueUSD: 62.1,
+              percentageOfParent: 37.0,
               description: "Applied research, biotechnology consulting, patent development, and precision engineering services.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Pharma research contractors", "Precision engineering patents"]
+              keyDrivers: ["Pharma research contractors", "Precision engineering patents"],
+              children: [
+                {
+                  id: "rd-biotech-contract",
+                  name: "Contract Preclinical R&D & Biotech Discovery",
+                  shortName: "Biotech Discovery R&D",
+                  icon: "🔬",
+                  color: "#2563eb",
+                  valueUSD: 33.4,
+                  percentageOfParent: 53.8,
+                  description: "Specialized clinical trials, molecular modeling, and genomics contract laboratories working alongside Basel and Zurich biotech clusters.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "rd-industrial-testing",
+                  name: "Testing, Inspection & Certification (SGS Group)",
+                  shortName: "Inspection & Testing",
+                  icon: "📋",
+                  color: "#3b82f6",
+                  valueUSD: 16.2,
+                  percentageOfParent: 26.1,
+                  description: "Geneva-based SGS is the world's leading inspection, verification, and testing company for trade and manufacturing compliance.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "rd-engineering-patents",
+                  name: "High-Tech Engineering & Intellectual Property",
+                  shortName: "Engineering & Patents",
+                  icon: "💡",
+                  color: "#60a5fa",
+                  valueUSD: 12.5,
+                  percentageOfParent: 20.1,
+                  description: "Switzerland files more European patent applications per capita than any other nation in the world.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-prof-real-estate",
@@ -155,9 +191,34 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🏘️",
               color: "#60a5fa",
               valueUSD: 58.4,
+              percentageOfParent: 34.8,
               description: "Residential housing rentals, commercial building portfolios, and real estate funds.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Institutional pension real estate", "Urban development"]
+              keyDrivers: ["Institutional pension real estate", "Urban development"],
+              children: [
+                {
+                  id: "re-residential-portfolios",
+                  name: "Institutional Pension Residential Portfolios",
+                  shortName: "Pension Residential Funds",
+                  icon: "🏢",
+                  color: "#2563eb",
+                  valueUSD: 34.2,
+                  percentageOfParent: 58.6,
+                  description: "Swiss pension funds and Swiss Prime Site managing apartment blocks across Zurich, Geneva, Lausanne, and Basel.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "re-commercial-parks",
+                  name: "Prime Commercial Offices & Business Parks",
+                  shortName: "Commercial Parks",
+                  icon: "🏙️",
+                  color: "#60a5fa",
+                  valueUSD: 24.2,
+                  percentageOfParent: 41.4,
+                  description: "High-spec corporate offices, data center landleases, and logistics distribution hubs (PSP Swiss Property).",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-prof-legal-accounting",
@@ -166,9 +227,34 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "⚖️",
               color: "#93c5fd",
               valueUSD: 47.4,
+              percentageOfParent: 28.2,
               description: "Corporate law, international tax consulting, fiduciary services, and strategy advisory.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Cross-border compliance", "Corporate reorganizations"]
+              keyDrivers: ["Cross-border compliance", "Corporate reorganizations"],
+              children: [
+                {
+                  id: "prof-legal-fiduciary",
+                  name: "Cross-Border Corporate Law & Swiss Fiduciary",
+                  shortName: "Corporate Law & Fiduciary",
+                  icon: "⚖️",
+                  color: "#3b82f6",
+                  valueUSD: 26.5,
+                  percentageOfParent: 55.9,
+                  description: "International corporate restructuring, commercial arbitration, and private fiduciary family governance.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "prof-big4-auditing",
+                  name: "Big-4 Auditing, Tax Compliance & Advisory",
+                  shortName: "Auditing & Tax",
+                  icon: "📊",
+                  color: "#93c5fd",
+                  valueUSD: 20.9,
+                  percentageOfParent: 44.1,
+                  description: "Statutory audits, transfer pricing, and ESG compliance for Switzerland's multinational headquarters.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             }
           ]
         },
@@ -191,9 +277,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "⛷️",
               color: "#0ea5e9",
               valueUSD: 51.5,
+              percentageOfParent: 32.0,
               description: "World-famous ski resorts (Zermatt, St. Moritz, Verbier), luxury Alpine hotels, and summer lake tourism.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Alpine ski tourism", "Luxury hotel gastronomy", "International congresses (WEF Davos)"]
+              keyDrivers: ["Alpine ski tourism", "Luxury hotel gastronomy", "International congresses (WEF Davos)"],
+              children: [
+                {
+                  id: "tour-alpine-skiing",
+                  name: "Alpine Ski Resorts & Mountain Cableways",
+                  shortName: "Alpine Ski Resorts",
+                  icon: "⛷️",
+                  color: "#0284c7",
+                  valueUSD: 22.4,
+                  percentageOfParent: 43.5,
+                  description: "Iconic ski domains: Zermatt Matterhorn Glacier, St. Moritz Corviglia, Verbier 4 Valleys, and Jungfrau Top of Europe.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "tour-luxury-palace-hotels",
+                  name: "5-Star Luxury Palace Hotels & Michelin Dining",
+                  shortName: "Luxury Palace Hotels",
+                  icon: "🏰",
+                  color: "#0ea5e9",
+                  valueUSD: 16.8,
+                  percentageOfParent: 32.6,
+                  description: "Legendary Swiss hospitality heritage: Badrutt's Palace, Gstaad Palace, Baur au Lac, and Beau-Rivage Palace Lausanne.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "tour-lakes-cultural",
+                  name: "Lake Navigation, Summer Tourism & Art Basel",
+                  shortName: "Lake & Cultural Tourism",
+                  icon: "⛵",
+                  color: "#38bdf8",
+                  valueUSD: 12.3,
+                  percentageOfParent: 23.9,
+                  description: "Historic paddle steamers on Lake Geneva and Lake Lucerne, Art Basel, Montreux Jazz, and the Locarno Film Festival.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-it-software",
@@ -202,9 +324,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🌐",
               color: "#38bdf8",
               valueUSD: 45.1,
+              percentageOfParent: 28.0,
               description: "Global AI research centers in Zurich, financial software, cybersecurity, and telecommunication infrastructure.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Google largest engineering office outside US", "Crypto Valley Zug", "FinTech"]
+              keyDrivers: ["Google largest engineering office outside US", "Crypto Valley Zug", "FinTech"],
+              children: [
+                {
+                  id: "it-global-ai-campuses",
+                  name: "Global Tech Hubs & AI R&D Campuses (Google Zurich)",
+                  shortName: "Global AI & Tech Hubs",
+                  icon: "🤖",
+                  color: "#0284c7",
+                  valueUSD: 18.2,
+                  percentageOfParent: 40.4,
+                  description: "Google's 5,000+ engineer Europaallee campus in Zurich, IBM Research Zurich (5 Nobel Prizes), and Microsoft Swiss Cloud.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "it-crypto-valley-fintech",
+                  name: "Crypto Valley Zug & Core Banking Software",
+                  shortName: "Crypto Valley & FinTech",
+                  icon: "🪙",
+                  color: "#0ea5e9",
+                  valueUSD: 14.5,
+                  percentageOfParent: 32.1,
+                  description: "Zug's blockchain ecosystem (Ethereum Foundation, Solana, Cardano), alongside global banking software providers Temenos and Avaloq.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "it-swisscom-telecom-cloud",
+                  name: "Swisscom Enterprise Cloud & Telecom Infrastructure",
+                  shortName: "Swisscom & Sovereign Cloud",
+                  icon: "📡",
+                  color: "#7dd3fc",
+                  valueUSD: 12.4,
+                  percentageOfParent: 27.5,
+                  description: "Fiber-optic 5G networks, data sovereign Swiss cloud storage, and secure enterprise defense systems.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-transport-logistics",
@@ -213,9 +371,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🚆",
               color: "#7dd3fc",
               valueUSD: 40.2,
+              percentageOfParent: 25.0,
               description: "SBB rail network (busiest in Europe), Swiss Post, Zurich Airport, and international freight forwarding.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Gotthard Base Tunnel", "Freight forwarding (Kühne+Nagel)", "Zurich Airport hub"]
+              keyDrivers: ["Gotthard Base Tunnel", "Freight forwarding (Kühne+Nagel)", "Zurich Airport hub"],
+              children: [
+                {
+                  id: "trans-sbb-railways",
+                  name: "SBB/CFF/FFS Federal Railway Network",
+                  shortName: "SBB Federal Rail",
+                  icon: "🚆",
+                  color: "#0284c7",
+                  valueUSD: 19.2,
+                  percentageOfParent: 47.8,
+                  description: "Clock-face timetable (Taktfahrplan), 57km Gotthard Base Tunnel transit, and punctual urban S-Bahn rail networks.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "trans-aviation-airports",
+                  name: "Swiss International Air Lines & Zurich Airport (ZRH)",
+                  shortName: "Aviation & Airports",
+                  icon: "✈️",
+                  color: "#38bdf8",
+                  valueUSD: 12.5,
+                  percentageOfParent: 31.1,
+                  description: "Switzerland's flagship air carrier SWISS (Lufthansa Group), Zurich Airport intercontinental hub, and Geneva Cointrin.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "trans-kuehne-nagel-freight",
+                  name: "Global Freight Forwarding (Kühne+Nagel Schindellegi)",
+                  shortName: "Global Freight Logistics",
+                  icon: "🚢",
+                  color: "#7dd3fc",
+                  valueUSD: 8.5,
+                  percentageOfParent: 21.1,
+                  description: "Headquartered in Schindellegi/Schwyz, Kühne+Nagel is the world's #1 ocean freight and #1 air logistics forwarder.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-education-academia",
@@ -224,9 +418,34 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🎓",
               color: "#bae6fd",
               valueUSD: 24.1,
+              percentageOfParent: 15.0,
               description: "Federal institutes ETH Zurich and EPFL, cantonal universities, and federal administrative bodies.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Top-10 global academic institutions", "Applied research grants"]
+              keyDrivers: ["Top-10 global academic institutions", "Applied research grants"],
+              children: [
+                {
+                  id: "edu-eth-epfl-institutes",
+                  name: "Federal Institutes of Technology (ETH Zurich & EPFL)",
+                  shortName: "ETH Zurich & EPFL",
+                  icon: "🏛️",
+                  color: "#0284c7",
+                  valueUSD: 14.8,
+                  percentageOfParent: 61.4,
+                  description: "Consistently ranked top-10 in the world for engineering and computer science; spinning off hundreds of deep-tech patents annually.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "edu-cantonal-cern",
+                  name: "Cantonal Universities & CERN Collaborative Research",
+                  shortName: "Universities & CERN",
+                  icon: "🔬",
+                  color: "#7dd3fc",
+                  valueUSD: 9.3,
+                  percentageOfParent: 38.6,
+                  description: "Universities of Zurich, Geneva, Basel, Bern, and international particle physics research at CERN in Meyrin.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             }
           ]
         },
@@ -249,9 +468,46 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🛢️",
               color: "#6366f1",
               valueUSD: 84.6,
+              percentageOfParent: 55.0,
               description: "Switzerland trades approx. 20-25% of the world's physical oil, 60% of metals, and 50% of coffee/sugar via Geneva and Zug.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Geneva petroleum trade", "Zug mining trading desks", "Trade finance credit lines"]
+              keyDrivers: ["Geneva petroleum trade", "Zug mining trading desks", "Trade finance credit lines"],
+              notableEntities: ["Glencore", "Trafigura", "Vitol", "Gunvor", "Mercuria"],
+              children: [
+                {
+                  id: "comm-oil-energy",
+                  name: "Physical Crude Oil & Refined Products Desks",
+                  shortName: "Oil & Energy Trading",
+                  icon: "🛢️",
+                  color: "#4338ca",
+                  valueUSD: 38.5,
+                  percentageOfParent: 45.5,
+                  description: "Geneva is the world's largest physical oil trading hub; Vitol, Trafigura, and Gunvor charter supertankers and trade millions of barrels daily.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "comm-metals-minerals",
+                  name: "Copper, Cobalt, Zinc & Critical Battery Minerals",
+                  shortName: "Metals & Minerals",
+                  icon: "⛏️",
+                  color: "#6366f1",
+                  valueUSD: 31.2,
+                  percentageOfParent: 36.9,
+                  description: "Baar/Zug is the global headquarters of Glencore, leading global physical trading in copper cathode, zinc, cobalt, and nickel for the energy transition.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "comm-agri-softs",
+                  name: "Agricultural Bulk Grains, Coffee & Cocoa Desks",
+                  shortName: "Agri Soft Commodities",
+                  icon: "☕",
+                  color: "#818cf8",
+                  valueUSD: 14.9,
+                  percentageOfParent: 17.6,
+                  description: "Global merchant desks for raw sugar, green coffee beans, and wheat bulk logistics centered in Geneva (Cargill, Louis Dreyfus, Sucafina).",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-retail-trade",
@@ -260,9 +516,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🛒",
               color: "#818cf8",
               valueUSD: 46.2,
+              percentageOfParent: 30.0,
               description: "Dominated by the consumer cooperatives Migros and Coop, alongside specialized electronics and luxury shopping.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Migros and Coop retail networks", "Luxury department stores (Manor, Globus)"]
+              keyDrivers: ["Migros and Coop retail networks", "Luxury department stores (Manor, Globus)"],
+              children: [
+                {
+                  id: "retail-migros-network",
+                  name: "Migros Cooperative Supermarkets & Denner",
+                  shortName: "Migros Federation",
+                  icon: "🍊",
+                  color: "#4f46e5",
+                  valueUSD: 24.8,
+                  percentageOfParent: 53.7,
+                  description: "Switzerland's largest employer and retail cooperative, including Migros supermarkets, Denner discounters, and Migros Industrie production.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "retail-coop-network",
+                  name: "Coop Group Supermarkets & Wholesale",
+                  shortName: "Coop Group",
+                  icon: "🛒",
+                  color: "#6366f1",
+                  valueUSD: 16.4,
+                  percentageOfParent: 35.5,
+                  description: "Coop Switzerland supermarkets, Coop Vitality pharmacies, Interdiscount electronics, and Transgourmet food service wholesale.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "retail-luxury-dept",
+                  name: "Luxury Department Stores & High-Street Boutiques",
+                  shortName: "Luxury Department Stores",
+                  icon: "🛍️",
+                  color: "#a5b4fc",
+                  valueUSD: 5.0,
+                  percentageOfParent: 10.8,
+                  description: "High-end retail on Zurich Bahnhofstrasse, Geneva Rue du Rhône, Manor department stores, and Globus luxury food halls.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-wholesale-b2b",
@@ -271,6 +563,7 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "📦",
               color: "#a5b4fc",
               valueUSD: 23.1,
+              percentageOfParent: 15.0,
               description: "Commercial distribution of industrial machinery, construction materials, and pharmaceutical supplies.",
               source: OFFICIAL_SOURCES.BFS_GDP,
               keyDrivers: ["Industrial machinery supply", "Pharmacy logistics (Galenica)"]
@@ -296,9 +589,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "💼",
               color: "#2563eb",
               valueUSD: 62.1,
+              percentageOfParent: 48.0,
               description: "Switzerland manages over $2.4 Trillion in cross-border wealth, making it the #1 global destination for international assets.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Cross-border private banking", "Ultra-high-net-worth family offices", "UBS global wealth"]
+              keyDrivers: ["Cross-border private banking", "Ultra-high-net-worth family offices", "UBS global wealth"],
+              children: [
+                {
+                  id: "wealth-ubs-global",
+                  name: "UBS Global Wealth Management",
+                  shortName: "UBS Global Wealth",
+                  icon: "🏦",
+                  color: "#1e40af",
+                  valueUSD: 38.2,
+                  percentageOfParent: 61.5,
+                  description: "Following the integration of Credit Suisse, UBS is the undisputed titan of global wealth management, overseeing trillions in client assets across Switzerland, Europe, Asia, and the Americas.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "wealth-geneva-private",
+                  name: "Geneva Private Banking Dynasties (Pictet, Lombard Odier)",
+                  shortName: "Geneva Private Banks",
+                  icon: "🏛️",
+                  color: "#2563eb",
+                  valueUSD: 14.5,
+                  percentageOfParent: 23.3,
+                  description: "Century-old private banking partnerships founded in the 18th and 19th centuries, specializing in institutional asset management and multi-generational family estates.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "wealth-boutique-zurich",
+                  name: "Zurich Boutique Wealth Managers (Julius Bär, Vontobel)",
+                  shortName: "Zurich Private Boutiques",
+                  icon: "💼",
+                  color: "#3b82f6",
+                  valueUSD: 9.4,
+                  percentageOfParent: 15.2,
+                  description: "Pure-play private banks offering bespoke discretionary mandates, structured investment solutions, and Swiss trust structuring.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-insurance-reinsurance",
@@ -307,9 +636,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🛡️",
               color: "#3b82f6",
               valueUSD: 36.2,
+              percentageOfParent: 28.0,
               description: "Swiss Re is the world's second-largest reinsurer; Zurich Insurance and Swiss Life lead commercial and life underwriting.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Catastrophe reinsurance", "Corporate risk underwriting", "Life & pension policies"]
+              keyDrivers: ["Catastrophe reinsurance", "Corporate risk underwriting", "Life & pension policies"],
+              children: [
+                {
+                  id: "ins-swiss-re-cat",
+                  name: "Swiss Re Catastrophe & Life Reinsurance",
+                  shortName: "Swiss Re Global",
+                  icon: "🌪️",
+                  color: "#1e3a8a",
+                  valueUSD: 18.5,
+                  percentageOfParent: 51.1,
+                  description: "Global risk capital underwriting hurricanes, earthquakes, cyber threats, and life reinsurance policies from its Zurich headquarters.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "ins-zurich-commercial",
+                  name: "Zurich Insurance Corporate & Commercial Risk",
+                  shortName: "Zurich Commercial",
+                  icon: "🏢",
+                  color: "#1d4ed8",
+                  valueUSD: 11.8,
+                  percentageOfParent: 32.6,
+                  description: "Multi-line insurance giant protecting Fortune 500 corporations, maritime freight, and international commercial liability.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "ins-swiss-life-pensions",
+                  name: "Swiss Life Comprehensive Pension Solutions",
+                  shortName: "Swiss Life Pensions",
+                  icon: "📜",
+                  color: "#3b82f6",
+                  valueUSD: 5.9,
+                  percentageOfParent: 16.3,
+                  description: "The leading provider of Swiss second-pillar corporate pension (BVG) plans, life insurance policies, and institutional real estate assets.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-cantonal-retail-banking",
@@ -318,9 +683,45 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🏛️",
               color: "#60a5fa",
               valueUSD: 31.1,
+              percentageOfParent: 24.0,
               description: "24 Cantonal Banks (e.g., ZKB, BCV) and Raiffeisen cooperative banks providing mortgages and local business credit.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Swiss mortgage market", "Cantonal state guarantees", "SME business loans"]
+              keyDrivers: ["Swiss mortgage market", "Cantonal state guarantees", "SME business loans"],
+              children: [
+                {
+                  id: "bank-cantonal-zkb",
+                  name: "Cantonal Banks with State Guarantees (ZKB, BCV)",
+                  shortName: "Cantonal Banks",
+                  icon: "🏛️",
+                  color: "#2563eb",
+                  valueUSD: 17.5,
+                  percentageOfParent: 56.3,
+                  description: "Semi-public institutions like Zürcher Kantonalbank (ZKB) backed by cantonal government guarantees, financing Swiss residential homeownership.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "bank-raiffeisen-coop",
+                  name: "Raiffeisen Switzerland Cooperative Banks",
+                  shortName: "Raiffeisen Switzerland",
+                  icon: "🤝",
+                  color: "#3b82f6",
+                  valueUSD: 9.8,
+                  percentageOfParent: 31.5,
+                  description: "The third-largest banking group in Switzerland, formed of independent local cooperative banks deeply rooted in Swiss municipalities.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "bank-postfinance-retail",
+                  name: "PostFinance & Consumer Payment Accounts",
+                  shortName: "PostFinance",
+                  icon: "💳",
+                  color: "#60a5fa",
+                  valueUSD: 3.8,
+                  percentageOfParent: 12.2,
+                  description: "Financial arm of Swiss Post handling universal everyday transactional payments and Twint digital peer-to-peer transfers.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             }
           ]
         },
@@ -343,9 +744,34 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🩺",
               color: "#06b6d4",
               valueUSD: 49.9,
+              percentageOfParent: 57.0,
               description: "Five university hospitals, cantonal hospitals, and luxury private clinics offering cutting-edge surgical care.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["University medical research", "Private medical tourism"]
+              keyDrivers: ["University medical research", "Private medical tourism"],
+              children: [
+                {
+                  id: "hosp-university-centers",
+                  name: "University Hospitals (USZ, CHUV, HUG, Inselspital)",
+                  shortName: "University Hospitals",
+                  icon: "🏥",
+                  color: "#0891b2",
+                  valueUSD: 29.5,
+                  percentageOfParent: 59.1,
+                  description: "Switzerland's five academic medical centers in Zurich, Lausanne, Geneva, Bern, and Basel conducting clinical trials and tertiary care.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "hosp-private-clinics",
+                  name: "Private Specialty Clinics (Hirslanden, Swiss Medical)",
+                  shortName: "Private Surgical Clinics",
+                  icon: "🏨",
+                  color: "#06b6d4",
+                  valueUSD: 20.4,
+                  percentageOfParent: 40.9,
+                  description: "High-end private medical networks attracting international medical tourism for neurosurgery, orthopedics, and cardiovascular surgery.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "tertiary-eldercare-social",
@@ -354,9 +780,34 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🤝",
               color: "#22d3ee",
               valueUSD: 37.6,
+              percentageOfParent: 43.0,
               description: "Spitex home care, nursing homes (Altersheime), disability support, and social safety programs.",
               source: OFFICIAL_SOURCES.BFS_GDP,
-              keyDrivers: ["Swiss Spitex home care network", "Retirement community infrastructure"]
+              keyDrivers: ["Swiss Spitex home care network", "Retirement community infrastructure"],
+              children: [
+                {
+                  id: "elder-spitex-home",
+                  name: "Spitex Non-Profit Home Nursing Network",
+                  shortName: "Spitex Home Nursing",
+                  icon: "🏠",
+                  color: "#0891b2",
+                  valueUSD: 19.8,
+                  percentageOfParent: 52.7,
+                  description: "Public mandate home nursing, outpatient medical treatments, and daily living assistance enabling elderly citizens to remain at home.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "elder-care-homes",
+                  name: "Altersheime & Specialized Nursing Residences",
+                  shortName: "Altersheime Nursing Homes",
+                  icon: "🧓",
+                  color: "#22d3ee",
+                  valueUSD: 17.8,
+                  percentageOfParent: 47.3,
+                  description: "Cantonal residential retirement communities providing full-time geriatric memory care, palliative care, and assisted living.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             }
           ]
         }
@@ -744,8 +1195,44 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🏢",
               color: "#c2410c",
               valueUSD: 21.1,
+              percentageOfParent: 52.1,
               description: "Modern apartment buildings, low-energy Minergie homes, and commercial offices.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "bldg-minergie-residential",
+                  name: "Minergie Ultra-Low Energy Residential Housing",
+                  shortName: "Minergie Eco-Housing",
+                  icon: "🏡",
+                  color: "#ea580c",
+                  valueUSD: 11.8,
+                  percentageOfParent: 55.9,
+                  description: "High-insulation certified Minergie-P/A residential homes with integrated photovoltaic roofs and geothermal heat pumps.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "bldg-commercial-hqs",
+                  name: "Life Science Campuses & Corporate Headquarters",
+                  shortName: "Corporate Campuses",
+                  icon: "🏙️",
+                  color: "#c2410c",
+                  valueUSD: 6.4,
+                  percentageOfParent: 30.3,
+                  description: "Modern high-rise commercial structures such as Roche Building 1 & 2 in Basel and the Novartis Pharma Campus.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "bldg-alpine-chalets",
+                  name: "Alpine Timber Chalets & Mountain Architecture",
+                  shortName: "Alpine Timber Chalets",
+                  icon: "🪵",
+                  color: "#fb923c",
+                  valueUSD: 2.9,
+                  percentageOfParent: 13.8,
+                  description: "Custom Swiss larch and pine architectural chalets in luxury resorts like Zermatt, Verbier, and Crans-Montana.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "secondary-construction-specialized",
@@ -754,8 +1241,44 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🪛",
               color: "#ea580c",
               valueUSD: 12.6,
+              percentageOfParent: 31.1,
               description: "Sanitary systems (Geberit), advanced building insulation (Sika), heat pump installations, and architectural carpentry.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "spec-geberit-sanitary",
+                  name: "Sanitary Engineering & Concealed Cisterns (Geberit)",
+                  shortName: "Geberit Sanitary",
+                  icon: "🚾",
+                  color: "#c2410c",
+                  valueUSD: 5.6,
+                  percentageOfParent: 44.4,
+                  description: "Rapperswil-Jona based Geberit is Europe's market leader in sanitary technology, acoustic drainpipes, and automated washlet systems.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "spec-sika-chemicals",
+                  name: "Specialty Sealants, Waterproofing & Adhesives (Sika)",
+                  shortName: "Sika Construction Chemicals",
+                  icon: "🧪",
+                  color: "#ea580c",
+                  valueUSD: 4.8,
+                  percentageOfParent: 38.1,
+                  description: "Baar-based Sika Group engineers concrete admixtures, tunnel waterproofing membranes, and acoustic damping polymers.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "spec-heatpumps-electrical",
+                  name: "Geothermal Heat Pumps & Smart Grid Wiring",
+                  shortName: "Heat Pumps & Smart Wiring",
+                  icon: "⚡",
+                  color: "#fb923c",
+                  valueUSD: 2.2,
+                  percentageOfParent: 17.5,
+                  description: "Energy renovation trades phasing out oil boilers for ground-source geothermal probes and smart home battery banks.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "secondary-construction-civil",
@@ -764,8 +1287,44 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🌉",
               color: "#fb923c",
               valueUSD: 6.8,
+              percentageOfParent: 16.8,
               description: "Mountain bridges, avalanche protection barriers, rail tunnels, and highway maintenance.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "civil-alpine-tunnels",
+                  name: "Alpine Transversal Rail & Road Tunnels (Gotthard)",
+                  shortName: "Gotthard & Rail Tunnels",
+                  icon: "🚇",
+                  color: "#c2410c",
+                  valueUSD: 3.6,
+                  percentageOfParent: 52.9,
+                  description: "Continuous tunnel engineering including the 57km Gotthard Base Tunnel, Ceneri Base Tunnel, and second Gotthard road tube excavation.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "civil-alpine-bridges",
+                  name: "Mountain Viaducts, Bridges & Pass Highways",
+                  shortName: "Alpine Bridges & Passes",
+                  icon: "🌉",
+                  color: "#ea580c",
+                  valueUSD: 1.9,
+                  percentageOfParent: 27.9,
+                  description: "Prestressed concrete viaducts and curved mountain railway bridges for the Rhaetian Railway and federal motorways (A2/A13).",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "civil-avalanche-defenses",
+                  name: "Avalanche Galleries, Snow Sheds & Rockfall Barriers",
+                  shortName: "Avalanche Protection",
+                  icon: "🏔️",
+                  color: "#fb923c",
+                  valueUSD: 1.3,
+                  percentageOfParent: 19.2,
+                  description: "Reinforced concrete snowshed galleries and high-tensile steel rockfall catch nets shielding Alpine transit corridors.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             }
           ]
         },
@@ -788,8 +1347,44 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "💧",
               color: "#a16207",
               valueUSD: 11.7,
+              percentageOfParent: 53.2,
               description: "Over 680 hydroelectric power stations, including massive gravity dams like Grande Dixence, producing ~58% of Swiss electricity.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "hydro-gravity-dams",
+                  name: "Alpine Storage Gravity Dams (Grande Dixence, Mauvoisin)",
+                  shortName: "Alpine Gravity Dams",
+                  icon: "🏔️",
+                  color: "#854d0e",
+                  valueUSD: 6.8,
+                  percentageOfParent: 58.1,
+                  description: "Grande Dixence in Valais is the world's highest gravity dam (285m), storing summer glacial runoff for winter power.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "hydro-pumped-storage",
+                  name: "Giant Pumped-Storage Battery Plants (Nant de Drance)",
+                  shortName: "Pumped Storage Battery",
+                  icon: "🔄",
+                  color: "#a16207",
+                  valueUSD: 3.2,
+                  percentageOfParent: 27.4,
+                  description: "Underground cavern pumped-storage stations (Nant de Drance, Linth-Limmern) acting as Europe's green grid stabilizer.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "hydro-run-river",
+                  name: "Run-of-River Hydroelectric Stations on Rhine & Aare",
+                  shortName: "Run-of-River Plants",
+                  icon: "🌊",
+                  color: "#ca8a04",
+                  valueUSD: 1.7,
+                  percentageOfParent: 14.5,
+                  description: "Continuous low-head turbine generation along major Swiss river flows supplying base industrial electricity.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "secondary-energy-nuclear",
@@ -798,8 +1393,44 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "⚛️",
               color: "#ca8a04",
               valueUSD: 4.8,
+              percentageOfParent: 21.8,
               description: "Four commercial nuclear reactors (Beznau I & II, Gösgen, Leibstadt) providing ~32% of domestic electricity production.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "nuc-goesgen",
+                  name: "Gösgen Pressurized Water Reactor (KKG)",
+                  shortName: "Gösgen Reactor",
+                  icon: "⚛️",
+                  color: "#a16207",
+                  valueUSD: 2.1,
+                  percentageOfParent: 43.8,
+                  description: "High-capacity 1060 MW PWR generating over 8 billion kWh of low-carbon electricity annually with district heat export.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "nuc-leibstadt",
+                  name: "Leibstadt Boiling Water Reactor (KKL)",
+                  shortName: "Leibstadt Reactor",
+                  icon: "⚛️",
+                  color: "#ca8a04",
+                  valueUSD: 1.8,
+                  percentageOfParent: 37.5,
+                  description: "Switzerland's largest nuclear generator (1275 MW) situated on the Rhine, delivering continuous baseload power.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "nuc-beznau",
+                  name: "Beznau I & II Baseload Reactors (Axpo)",
+                  shortName: "Beznau I & II",
+                  icon: "⚛️",
+                  color: "#eab308",
+                  valueUSD: 0.9,
+                  percentageOfParent: 18.7,
+                  description: "Two twin units in Aargau operating under stringent Swiss Federal Nuclear Safety Inspectorate (ENSI) supervision.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "secondary-energy-renewables",
@@ -808,8 +1439,33 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "☀️",
               color: "#eab308",
               valueUSD: 2.6,
+              percentageOfParent: 11.8,
               description: "Fast-growing rooftop solar installations and district heating biomass plants supported by federal incentive programs.",
-              source: OFFICIAL_SOURCES.BFS_GDP
+              source: OFFICIAL_SOURCES.BFS_GDP,
+              children: [
+                {
+                  id: "renew-solar-pv",
+                  name: "Alpine & Rooftop Solar Photovoltaic Installations",
+                  shortName: "Solar Photovoltaics",
+                  icon: "☀️",
+                  color: "#ca8a04",
+                  valueUSD: 1.8,
+                  percentageOfParent: 69.2,
+                  description: "High-altitude solar installations on mountain dams (e.g. Muttsee) producing 50% more winter solar energy than lowland panels.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                },
+                {
+                  id: "renew-district-biomass",
+                  name: "Wood-Chip Biomass & District Thermal Networks",
+                  shortName: "Biomass & District Heat",
+                  icon: "🪵",
+                  color: "#eab308",
+                  valueUSD: 0.8,
+                  percentageOfParent: 30.8,
+                  description: "Regional heating grids fueled by Swiss forest residuals replacing imported fossil heating fuel.",
+                  source: OFFICIAL_SOURCES.BFS_GDP
+                }
+              ]
             },
             {
               id: "secondary-energy-water-waste",
@@ -818,6 +1474,7 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "🚰",
               color: "#facc15",
               valueUSD: 2.5,
+              percentageOfParent: 11.4,
               description: "World-class tap water filtration from Alpine springs and lakes, combined with advanced waste incineration plants.",
               source: OFFICIAL_SOURCES.BFS_GDP
             },
@@ -828,6 +1485,7 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               icon: "⛏️",
               color: "#fef08a",
               valueUSD: 0.4,
+              percentageOfParent: 1.8,
               description: "Switzerland possesses no fossil fuels or metallic ores; mining is limited to Bex salt mines, gravel, limestone, and granite.",
               source: OFFICIAL_SOURCES.BFS_GDP
             }
@@ -884,7 +1542,53 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   valueUSD: 1.15,
                   percentageOfParent: 58.4,
                   description: "High-value export cheeses made according to strict artisanal AOP guidelines with unpasteurized raw mountain milk.",
-                  source: OFFICIAL_SOURCES.BLW_AGRAR
+                  source: OFFICIAL_SOURCES.BLW_AGRAR,
+                  children: [
+                    {
+                      id: "cheese-gruyere-aop",
+                      name: "Le Gruyère AOP (Fribourg & Vaud)",
+                      shortName: "Le Gruyère AOP",
+                      icon: "🧀",
+                      color: "#14532d",
+                      valueUSD: 0.58,
+                      percentageOfParent: 50.4,
+                      description: "Switzerland's #1 cheese by volume and export value; aged 6 to 24 months in humid cellars, central to Swiss fondue.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "cheese-emmentaler-aop",
+                      name: "Emmentaler AOP (Valley of the Emme)",
+                      shortName: "Emmentaler AOP",
+                      icon: "🧀",
+                      color: "#166534",
+                      valueUSD: 0.28,
+                      percentageOfParent: 24.3,
+                      description: "The classic Swiss cheese with walnut-sized natural gas holes, produced in giant 90kg wheels using pasture grass milk.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "cheese-appenzeller-raclette",
+                      name: "Appenzeller & Raclette du Valais AOP",
+                      shortName: "Appenzeller & Raclette",
+                      icon: "🫕",
+                      color: "#15803d",
+                      valueUSD: 0.19,
+                      percentageOfParent: 16.5,
+                      description: "Appenzeller washed with a secret herbal brine, and raw mountain milk Raclette du Valais melted over potatoes.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "cheese-sbrinz-tete",
+                      name: "Sbrinz AOP, Tête de Moine & Vacherin Mont-d'Or",
+                      shortName: "Sbrinz & Specialties",
+                      icon: "🧀",
+                      color: "#22c55e",
+                      valueUSD: 0.10,
+                      percentageOfParent: 8.8,
+                      description: "Super-hard grating cheese Sbrinz, rosetted Tête de Moine shaved with a Girolle, and spruce-wrapped winter Vacherin.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    }
+                  ]
                 },
                 {
                   id: "agri-dairy-fluid-milk",
@@ -932,7 +1636,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   valueUSD: 0.58,
                   percentageOfParent: 47.5,
                   description: "Suckler cow herds grazing on mountain pastures; high quality veal for Zürcher Geschnetzeltes.",
-                  source: OFFICIAL_SOURCES.BLW_AGRAR
+                  source: OFFICIAL_SOURCES.BLW_AGRAR,
+                  children: [
+                    {
+                      id: "beef-natura-herds",
+                      name: "Natura-Beef Pasture Suckler Cow Herds",
+                      shortName: "Natura-Beef Pasture",
+                      icon: "🐂",
+                      color: "#14532d",
+                      valueUSD: 0.31,
+                      percentageOfParent: 53.4,
+                      description: "Calves raised alongside mother cows on outdoor pasture and mountain alpine summer meadows under Mutterkuh Schweiz standards.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "beef-veal-alpine",
+                      name: "Premium Swiss Veal for Zürcher Geschnetzeltes",
+                      shortName: "Swiss Veal",
+                      icon: "🥩",
+                      color: "#166534",
+                      valueUSD: 0.18,
+                      percentageOfParent: 31.0,
+                      description: "Tender milk-fed veal, the quintessential culinary centerpiece of classic Swiss gastronomy and cantonal butchery.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "beef-buendnerfleisch-cured",
+                      name: "Bündnerfleisch Cured Air-Dried Mountain Beef",
+                      shortName: "Bündnerfleisch Beef",
+                      icon: "🥩",
+                      color: "#15803d",
+                      valueUSD: 0.09,
+                      percentageOfParent: 15.6,
+                      description: "Graubünden cured beef rubbed with Alpine herbs and dried by clean mountain winds for several months.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    }
+                  ]
                 },
                 {
                   id: "agri-meat-pork",
@@ -1028,7 +1767,53 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
                   valueUSD: 0.29,
                   percentageOfParent: 65.9,
                   description: "High-end artisanal wines from Valais, Lavaux (Vaud), Geneva, and Ticino (Merlot).",
-                  source: OFFICIAL_SOURCES.BLW_AGRAR
+                  source: OFFICIAL_SOURCES.BLW_AGRAR,
+                  children: [
+                    {
+                      id: "wine-valais-terraces",
+                      name: "Valais Sun Terraces (Petite Arvine, Fendant, Cornalin)",
+                      shortName: "Valais Terraces",
+                      icon: "☀️",
+                      color: "#14532d",
+                      valueUSD: 0.12,
+                      percentageOfParent: 41.4,
+                      description: "Switzerland's largest wine canton, bathed in over 2,000 sunshine hours producing mineral Petite Arvine and indigenous Cornalin.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "wine-lavaux-unesco",
+                      name: "Lavaux UNESCO Terraced Vineyards (Chasselas)",
+                      shortName: "Lavaux UNESCO Chasselas",
+                      icon: "🍇",
+                      color: "#166534",
+                      valueUSD: 0.09,
+                      percentageOfParent: 31.0,
+                      description: "Medieval terraced vineyards rising above Lake Geneva, famed for subtle mineral Chasselas nurtured by 'three suns' (sky, lake, stone walls).",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "wine-ticino-merlot",
+                      name: "Ticino Merlot & Merlot Bianco",
+                      shortName: "Ticino Merlot",
+                      icon: "🍷",
+                      color: "#15803d",
+                      valueUSD: 0.05,
+                      percentageOfParent: 17.2,
+                      description: "South of the Alps, Ticino produces world-class barrel-aged red Merlots and delicate white Merlots.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    },
+                    {
+                      id: "wine-pinot-eastern",
+                      name: "Bündner Herrschaft Pinot Noir & Geneva AOC",
+                      shortName: "Bündner Herrschaft & Geneva",
+                      icon: "🍇",
+                      color: "#22c55e",
+                      valueUSD: 0.03,
+                      percentageOfParent: 10.4,
+                      description: "Burgundian-style Grand Cru Pinot Noir in the Rhine Valley (Graubünden) warmed by Föhn winds.",
+                      source: OFFICIAL_SOURCES.BLW_AGRAR
+                    }
+                  ]
                 },
                 {
                   id: "agri-fruits-apples-cherries",
@@ -1080,7 +1865,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               valueUSD: 0.62,
               percentageOfParent: 53.9,
               description: "High-quality Norway spruce and silver fir logs harvested for building construction, roof trusses, and Swiss chalets.",
-              source: OFFICIAL_SOURCES.FOEN_FOREST
+              source: OFFICIAL_SOURCES.FOEN_FOREST,
+              children: [
+                {
+                  id: "timber-norway-spruce",
+                  name: "Norway Spruce (Fichte / Épicéa) Sawlogs",
+                  shortName: "Norway Spruce Sawlogs",
+                  icon: "🌲",
+                  color: "#065f46",
+                  valueUSD: 0.38,
+                  percentageOfParent: 61.3,
+                  description: "The 'bread and butter' tree of Swiss forestry, prized for high load-bearing capacity in chalet carpentry and structural glulam beams.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                },
+                {
+                  id: "timber-silver-fir",
+                  name: "Silver Fir (Tanne / Sapin) Framing Timber",
+                  shortName: "Silver Fir Framing",
+                  icon: "🌲",
+                  color: "#047857",
+                  valueUSD: 0.16,
+                  percentageOfParent: 25.8,
+                  description: "Resin-free, rot-resistant Alpine white wood used for interior woodwork, acoustic ceiling panels, and facade cladding.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                },
+                {
+                  id: "timber-hardwood-larch",
+                  name: "Swiss Stone Pine (Arve), Larch & Hardwood",
+                  shortName: "Arve, Larch & Hardwood",
+                  icon: "🪵",
+                  color: "#059669",
+                  valueUSD: 0.08,
+                  percentageOfParent: 12.9,
+                  description: "High-altitude Engadin stone pine (Arvenholz) renowned for soothing aromatherapeutic scents, alongside durable mountain larch.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                }
+              ]
             },
             {
               id: "forestry-energy-wood",
@@ -1128,7 +1948,42 @@ export const SWISS_ECONOMY_TREE: SectorNode = {
               valueUSD: 0.038,
               percentageOfParent: 47.5,
               description: "Artisanal gillnet fishing on Lake Geneva, Lake Neuchâtel, Lake Constance, producing prized filets de perche for lakeside restaurants.",
-              source: OFFICIAL_SOURCES.FOEN_FOREST
+              source: OFFICIAL_SOURCES.FOEN_FOREST,
+              children: [
+                {
+                  id: "fish-perch-filets",
+                  name: "Fresh Filets de Perche du Léman (Lake Perch)",
+                  shortName: "Filets de Perche",
+                  icon: "🐟",
+                  color: "#115e59",
+                  valueUSD: 0.021,
+                  percentageOfParent: 55.3,
+                  description: "The most iconic lakeside culinary dish in Switzerland, pan-fried meunière in butter and served across Lake Geneva restaurants.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                },
+                {
+                  id: "fish-fera-coregonus",
+                  name: "Lake Geneva Féra (Coregonus Whitefish)",
+                  shortName: "Féra Whitefish",
+                  icon: "🐟",
+                  color: "#0f766e",
+                  valueUSD: 0.012,
+                  percentageOfParent: 31.6,
+                  description: "Wild deep-water coregonid harvested by licensed artisanal fishermen with set gillnets in Lake Geneva and Lake Neuchâtel.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                },
+                {
+                  id: "fish-arctic-char",
+                  name: "Alpine Arctic Char & Wild Lake Trout",
+                  shortName: "Arctic Char & Trout",
+                  icon: "🎣",
+                  color: "#0d9488",
+                  valueUSD: 0.005,
+                  percentageOfParent: 13.1,
+                  description: "Prized high-altitude salmonids thriving in cold, oxygen-rich glacial waters.",
+                  source: OFFICIAL_SOURCES.FOEN_FOREST
+                }
+              ]
             },
             {
               id: "fishing-aquaculture-trout",
