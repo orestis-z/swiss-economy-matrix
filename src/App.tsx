@@ -478,16 +478,6 @@ export function App() {
                 </a>
               </span>
               <span className="text-slate-700">•</span>
-              <a
-                href="https://github.com/orestis-z/swiss-economy-matrix"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-slate-300 hover:text-white underline underline-offset-4 transition-colors"
-              >
-                <GithubIcon className="w-3.5 h-3.5" />
-                <span>GitHub Source</span>
-              </a>
-              <span className="text-slate-700">•</span>
               <span>
                 Last Updated: <strong className="text-slate-300 font-medium">September 28, 2026</strong>
               </span>
@@ -502,7 +492,7 @@ export function App() {
               className="flex items-center gap-1.5 text-slate-300 hover:text-white underline underline-offset-4 transition-colors"
             >
               <GithubIcon className="w-3.5 h-3.5" />
-              <span>GitHub Repo</span>
+              <span>GitHub</span>
             </a>
             <span className="text-slate-700">•</span>
             <button
