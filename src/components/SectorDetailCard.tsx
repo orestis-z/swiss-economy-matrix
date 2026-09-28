@@ -1,7 +1,7 @@
 import React from 'react'
 import type { SectorNode } from '../data/swissEconomyData'
 import { isNodeModeledEstimate, getNodeEstimateMethodology } from '../data/swissEconomyData'
-import { ExternalLink, Building2, TrendingUp, BookOpen, ChevronRight, AlertTriangle, ShieldCheck } from 'lucide-react'
+import { ExternalLink, Building2, TrendingUp, BookOpen, ChevronRight, AlertTriangle } from 'lucide-react'
 import { formatValue } from '../utils/pieMath'
 
 interface SectorDetailCardProps {
@@ -50,15 +50,10 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
               <span className="text-xs uppercase font-mono tracking-wider text-slate-400">
                 Selected Sector Detail
               </span>
-              {isEstimated ? (
+              {isEstimated && (
                 <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
                   <AlertTriangle className="w-3 h-3 text-amber-400" />
                   <span>Modeled Estimate</span>
-                </span>
-              ) : (
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                  <span>Direct Official</span>
                 </span>
               )}
             </div>
@@ -158,8 +153,8 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
         )}
       </div>
 
-      {/* Data Provenance & Transparency Callout (Explicitly mentions whether number was directly sourced or modeled) */}
-      {isEstimated ? (
+      {/* Data Provenance & Transparency Callout (Only shown for modeled estimates) */}
+      {isEstimated && (
         <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/40 text-amber-200 flex flex-col gap-2">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-amber-400">
@@ -180,18 +175,6 @@ export const SectorDetailCard: React.FC<SectorDetailCardProps> = ({
             <span className="text-[10px] text-amber-400/90 italic">
               * Not a raw statistical bureau line item
             </span>
-          </div>
-        </div>
-      ) : (
-        <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-emerald-200 flex items-start gap-2.5">
-          <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-          <div className="flex flex-col gap-0.5">
-            <div className="font-bold text-xs uppercase tracking-wider text-emerald-300">
-              Direct Official Government / Industry Record
-            </div>
-            <p className="text-xs text-emerald-100/90 leading-relaxed">
-              This figure is directly reported in published statistical releases by {node.source.organization} ({node.source.name}).
-            </p>
           </div>
         </div>
       )}
