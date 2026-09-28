@@ -1,5 +1,7 @@
 # 🇨🇭 Swiss Economy Matrix — Interactive Drill-Down Pie Explorer
 
+![Swiss Economy Matrix Screenshot](./screenshot.png)
+
 An intuitive, high-performance web application designed to visualize Switzerland's Gross Domestic Product (GDP) and economic sector hierarchy through animated, multi-tier drill-down pie and donut charts.
 
 ---
